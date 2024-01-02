@@ -6,6 +6,7 @@ var choices = document.getElementById("choices");
 var endScreen = document.getElementById("end-screen");
 var feedback = document.getElementById("feedback");
 var feedbackText = document.getElementById("feedback-text")
+var timeEl = document.getElementById("time");
 
 var questionIndex = 0;
 var score = 0;
@@ -85,6 +86,7 @@ var endQuiz = function() {
     sessionStorage.setItem("score", score);
     questionScreen.setAttribute("class", "hide");
     endScreen.setAttribute("class", "active");
+    timeEl.textContent = 0;
 }
 
 var nextQuestion = function() {
@@ -99,13 +101,12 @@ var nextQuestion = function() {
 
 
 // Timer
-var timeEl = document.getElementById("time");
 
 var startTimer = function() {
     var timer = 60;
     timeEl.textContent = timer;
     setInterval(function(){
-        if (timer > 0) {
+        if (timer > 0 && endScreen.getAttribute("class") === "hide") {
             timer--;
             timeEl.textContent = timer;
             console.log(timer);
