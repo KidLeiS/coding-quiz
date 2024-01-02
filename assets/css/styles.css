@@ -49,10 +49,6 @@ li {
   list-style: decimal inside none;
 }
 
-li:nth-child(odd) {
-  background-color: #f3edfc;
-}
-
 .wrapper {
   margin: 100px auto 0 auto;
   max-width: 600px;
@@ -85,4 +81,24 @@ li:nth-child(odd) {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+h4 {
+  font-style:italic;
+}
+
+.button-style {
+  margin: 5px;
+  cursor: pointer;
+  font-size: 100%;
+  background-color: #563d7c;
+  border-radius: 5px;
+  padding: 2px 10px;
+  color: white;
+  border: 0;
+  transition: background-color 0.1s;
+}
+
+.button-style:hover {
+  background-color: #8570a5;
 }
