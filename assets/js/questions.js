@@ -11,6 +11,7 @@ var timeEl = document.getElementById("time");
 var questionIndex = 0;
 var score = 0;
 var correctAnswer;
+var timer = 0;
 
 var question1 = {
     question:"What type of variable would you use for an if condition?",
@@ -101,9 +102,8 @@ var nextQuestion = function() {
 
 
 // Timer
-
 var startTimer = function() {
-    var timer = 60;
+    timer = 60;
     timeEl.textContent = timer;
     setInterval(function(){
         if (timer > 0 && endScreen.getAttribute("class") === "hide") {
@@ -144,6 +144,8 @@ choices.addEventListener("click", function(event) {
         } else {
             feedbackText.textContent = "Wrong!";
             feedbackText.style.color = "rgb(255,0,0)";
+            timer -= 10;
+            timeEl.textContent = timer;
         };
         
         feedback.setAttribute("class", "active");
