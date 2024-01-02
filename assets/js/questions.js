@@ -82,6 +82,7 @@ var clearQuestions = function() {
 
 var endQuiz = function() {
     document.getElementById("final-score").textContent = score;
+    sessionStorage.setItem("score", score);
     questionScreen.setAttribute("class", "hide");
     endScreen.setAttribute("class", "active");
 }
