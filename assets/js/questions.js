@@ -1,3 +1,5 @@
+//Set DOMS variables (web APIs)
+
 var startButton = document.querySelector("#start");
 var startScreen = document.querySelector(".start");
 var questionScreen = document.querySelector("#questions");
@@ -8,11 +10,13 @@ var feedback = document.getElementById("feedback");
 var feedbackText = document.getElementById("feedback-text")
 var timeEl = document.getElementById("time");
 
+//Set logic variables
 var questionIndex = 0;
 var score = 0;
 var correctAnswer;
 var timer = 0;
 
+//Set question objects
 var question1 = {
     question:"What type of variable would you use for an if condition?",
     answers:["number", "integer", "boolean", "null"],
@@ -43,8 +47,10 @@ var question5 = {
     correctIndex:1,
 };
 
+//Bundled question objects into an array
 var questions = [question1, question2, question3, question4, question5];
 
+//Function for rendering questions
 var renderQuestions = function() {
     var listEl = document.createElement("ol");
     var choice0 = document.createElement("li");
@@ -77,11 +83,13 @@ var renderQuestions = function() {
     listEl.appendChild(choice3);
 }
 
+//Function for clearing rendered questions
 var clearQuestions = function() {
     listEl = choices.querySelector("ol");
     listEl.remove();
 }
 
+//Function for ending (submitting) the quiz
 var endQuiz = function() {
     document.getElementById("final-score").textContent = score;
     sessionStorage.setItem("score", score);
@@ -90,6 +98,7 @@ var endQuiz = function() {
     timeEl.textContent = 0;
 }
 
+//Function for generating the next question
 var nextQuestion = function() {
     clearQuestions();
     if (questionIndex<questions.length-1) {
@@ -100,8 +109,7 @@ var nextQuestion = function() {
     };
 }
 
-
-// Timer
+// Timer function (not including 10s penalty on wrong questions)
 var startTimer = function() {
     timer = 60;
     timeEl.textContent = timer;
@@ -118,7 +126,7 @@ var startTimer = function() {
 
 }
 
-
+// Start quiz function
 var startQuiz = function() {
     startScreen.setAttribute("class", "hide");
     questionScreen.setAttribute("class", "active");
@@ -126,15 +134,18 @@ var startQuiz = function() {
     startTimer();
 }
 
-// Setting Timeout Handle variable for Feedback
-var timeoutHandle = window.setTimeout(function(){
-    feedback.setAttribute("class", "hide");
-},2000);
+
 
 // Start quiz event listener
 startButton.addEventListener("click", startQuiz);
 
 
+// Setting Timeout Handle variable for Feedback
+var timeoutHandle = window.setTimeout(function(){
+    feedback.setAttribute("class", "hide");
+},2000);
+
+// Feedback event listener
 choices.addEventListener("click", function(event) {
     if (event.target.tagName.toLowerCase() === 'li') {
         if (event.target.dataset.index == correctAnswer){
