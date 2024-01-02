@@ -2,13 +2,13 @@
 An application for a simple 5 question quiz with front-end coding related questions, with local storage memory for highscores
 
 ## Table of contents
--About The Project
--Built With
--Getting Started
--Usage
--Roadmap
--License
--Contact
+- About The Project
+- Built With
+- Getting Started
+- Usage
+- Roadmap
+- License
+- Contact
 
 ## About The Project
 Welcome to my coding quiz app. Please have fun playing around with the coding quiz (hopefully it shouldn't be too hard!)
